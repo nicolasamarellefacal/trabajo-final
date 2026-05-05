@@ -1,0 +1,2655 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EnglishMaster PAU | 2º Bachillerato</title>
+
+<style>
+:root{
+    --bg:#f4f7fb;
+    --bg2:#eaf1ff;
+    --text:#111827;
+    --muted:#667085;
+    --card:#ffffff;
+    --primary:#2563eb;
+    --primary2:#06b6d4;
+    --accent:#f59e0b;
+    --success:#10b981;
+    --danger:#ef4444;
+    --purple:#7c3aed;
+    --border:#dbe5f5;
+    --shadow:0 20px 55px rgba(15,23,42,.13);
+    --radius:24px;
+}
+
+*{
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top left, rgba(37,99,235,.14), transparent 35%),
+        linear-gradient(135deg,var(--bg),var(--bg2));
+    color:var(--text);
+}
+
+body.dark{
+    --bg:#07111f;
+    --bg2:#0f172a;
+    --text:#f8fafc;
+    --muted:#b6c2d6;
+    --card:#111c31;
+    --border:#263653;
+    --shadow:0 20px 55px rgba(0,0,0,.42);
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button,input,textarea,select{
+    font-family:inherit;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+}
+
+header{
+    position:relative;
+    min-height:96vh;
+    overflow:hidden;
+    padding:28px 7vw 80px;
+    color:white;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(245,158,11,.45), transparent 25%),
+        radial-gradient(circle at 85% 20%, rgba(6,182,212,.42), transparent 30%),
+        linear-gradient(135deg,#0f172a,#1d4ed8 48%,#06b6d4);
+}
+
+.header-top{
+    position:relative;
+    z-index:2;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:18px;
+    margin-bottom:75px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:900;
+    font-size:22px;
+}
+
+.logo span{
+    display:grid;
+    place-items:center;
+    width:48px;
+    height:48px;
+    border-radius:17px;
+    background:white;
+    color:#2563eb;
+    box-shadow:0 14px 30px rgba(0,0,0,.22);
+}
+
+.nav{
+    display:flex;
+    justify-content:flex-end;
+    flex-wrap:wrap;
+    gap:9px;
+}
+
+.nav a,
+.theme-toggle{
+    padding:10px 14px;
+    border-radius:999px;
+    font-size:14px;
+    font-weight:800;
+    background:rgba(255,255,255,.14);
+    color:white;
+    backdrop-filter:blur(10px);
+    transition:.25s;
+}
+
+.theme-toggle{
+    background:#f59e0b;
+    color:#111827;
+}
+
+.nav a:hover,
+.theme-toggle:hover{
+    transform:translateY(-3px);
+    background:white;
+    color:#2563eb;
+}
+
+.hero{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1.08fr .92fr;
+    gap:52px;
+    align-items:center;
+}
+
+.hero h1{
+    margin:0;
+    font-size:clamp(44px,7vw,92px);
+    line-height:.94;
+    letter-spacing:-3px;
+}
+
+.hero h1 span{
+    color:#fde68a;
+}
+
+.hero p{
+    max-width:760px;
+    font-size:20px;
+    line-height:1.65;
+    opacity:.95;
+}
+
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 20px;
+    border-radius:999px;
+    font-weight:900;
+    transition:.25s;
+}
+
+.btn.primary{
+    background:white;
+    color:#2563eb;
+}
+
+.btn.blue{
+    background:#2563eb;
+    color:white;
+}
+
+.btn.yellow{
+    background:#f59e0b;
+    color:#111827;
+}
+
+.btn.ghost{
+    background:rgba(255,255,255,.14);
+    color:white;
+    border:1px solid rgba(255,255,255,.35);
+}
+
+.btn.soft{
+    background:rgba(37,99,235,.11);
+    color:var(--primary);
+    border:1px solid var(--border);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 32px rgba(0,0,0,.22);
+}
+
+.hero-panel{
+    padding:28px;
+    border-radius:34px;
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.26);
+    backdrop-filter:blur(18px);
+    box-shadow:0 30px 80px rgba(0,0,0,.26);
+    animation:float 4.4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-14px)}
+}
+
+.level-card{
+    background:white;
+    color:#111827;
+    border-radius:26px;
+    padding:24px;
+    margin-bottom:16px;
+}
+
+.level-card h3{
+    margin:0 0 8px;
+}
+
+.big-number{
+    font-size:50px;
+    font-weight:950;
+    color:#2563eb;
+    letter-spacing:-2px;
+}
+
+.mini-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.mini-stat{
+    padding:16px;
+    border-radius:20px;
+    background:rgba(255,255,255,.18);
+    text-align:center;
+}
+
+.mini-stat b{
+    display:block;
+    font-size:28px;
+}
+
+.binary{
+    position:absolute;
+    color:rgba(255,255,255,.22);
+    font-family:monospace;
+    font-weight:900;
+    animation:rise 12s linear infinite;
+}
+
+.binary:nth-child(1){left:8%;bottom:-80px;animation-delay:0s;font-size:28px}
+.binary:nth-child(2){left:42%;bottom:-100px;animation-delay:2s;font-size:20px}
+.binary:nth-child(3){left:78%;bottom:-120px;animation-delay:4s;font-size:30px}
+.binary:nth-child(4){left:60%;bottom:-100px;animation-delay:6s;font-size:18px}
+
+@keyframes rise{
+    from{transform:translateY(0) rotate(0);opacity:.8}
+    to{transform:translateY(-115vh) rotate(360deg);opacity:0}
+}
+
+main{
+    padding:62px 7vw;
+}
+
+.section-title{
+    margin:0 0 14px;
+    font-size:clamp(30px,4vw,52px);
+    letter-spacing:-1px;
+}
+
+.section-subtitle{
+    max-width:900px;
+    margin:0 0 36px;
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.7;
+}
+
+.dashboard{
+    position:relative;
+    z-index:3;
+    margin-top:-112px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.stat{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px;
+    box-shadow:var(--shadow);
+    min-height:150px;
+}
+
+.stat .icon{
+    font-size:30px;
+}
+
+.stat b{
+    display:block;
+    margin:12px 0 4px;
+    font-size:34px;
+}
+
+.stat span{
+    color:var(--muted);
+}
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:28px;
+    box-shadow:var(--shadow);
+}
+
+.grid-2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+}
+
+.grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.skill-card{
+    position:relative;
+    overflow:hidden;
+    min-height:270px;
+    transition:.3s;
+}
+
+.skill-card:hover{
+    transform:translateY(-8px);
+}
+
+.skill-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 88% 10%, rgba(37,99,235,.17), transparent 35%);
+    pointer-events:none;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:7px 12px;
+    border-radius:999px;
+    background:rgba(37,99,235,.12);
+    color:var(--primary);
+    font-size:13px;
+    font-weight:900;
+}
+
+.skill-card h3{
+    margin:16px 0 10px;
+    font-size:24px;
+}
+
+.skill-card ul{
+    line-height:1.75;
+    padding-left:20px;
+}
+
+.tip{
+    margin-top:16px;
+    padding:15px;
+    border-left:5px solid var(--accent);
+    border-radius:15px;
+    background:rgba(245,158,11,.13);
+}
+
+.progress-box{
+    width:100%;
+    height:18px;
+    border-radius:999px;
+    background:var(--border);
+    overflow:hidden;
+}
+
+.progress-bar{
+    width:0%;
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg,var(--success),var(--primary2));
+    transition:.45s;
+}
+
+.controls{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:24px;
+}
+
+.control-btn{
+    padding:10px 15px;
+    border-radius:999px;
+    background:var(--card);
+    color:var(--text);
+    border:1px solid var(--border);
+    font-weight:900;
+    transition:.2s;
+}
+
+.control-btn:hover,
+.control-btn.active{
+    background:var(--primary);
+    color:white;
+}
+
+.route{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:14px;
+}
+
+.route-step{
+    position:relative;
+    min-height:170px;
+    border-radius:22px;
+    padding:18px;
+    background:var(--card);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+}
+
+.route-step::after{
+    content:"→";
+    position:absolute;
+    right:-15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:var(--primary);
+    font-size:26px;
+    font-weight:900;
+}
+
+.route-step:last-child::after{
+    display:none;
+}
+
+.route-step b{
+    display:block;
+    color:var(--primary);
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.trainer-box{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:24px;
+}
+
+.flash-card{
+    min-height:340px;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding:35px;
+    border-radius:30px;
+    background:linear-gradient(135deg,#2563eb,#06b6d4);
+    color:white;
+    box-shadow:var(--shadow);
+    cursor:pointer;
+    transition:.35s;
+}
+
+.flash-card:hover{
+    transform:rotate(-1deg) scale(1.02);
+}
+
+.flash-card h3{
+    margin:0 0 12px;
+    font-size:36px;
+}
+
+.flash-card p{
+    font-size:19px;
+    line-height:1.55;
+}
+
+.practice-question{
+    padding:20px;
+    border-radius:18px;
+    background:rgba(37,99,235,.07);
+    border:1px solid var(--border);
+    margin-bottom:16px;
+}
+
+.practice-question h3{
+    margin-top:0;
+}
+
+.practice-question input{
+    width:100%;
+    padding:13px;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:transparent;
+    color:var(--text);
+    outline:none;
+}
+
+.option{
+    display:block;
+    padding:12px 14px;
+    margin:8px 0;
+    border-radius:14px;
+    border:1px solid var(--border);
+    background:var(--card);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.option:hover{
+    transform:translateX(6px);
+    border-color:var(--primary);
+}
+
+.feedback{
+    display:none;
+    margin-top:16px;
+    padding:17px;
+    border-radius:16px;
+    line-height:1.65;
+}
+
+.feedback.good{
+    display:block;
+    background:rgba(16,185,129,.13);
+    border:1px solid rgba(16,185,129,.35);
+}
+
+.feedback.bad{
+    display:block;
+    background:rgba(239,68,68,.12);
+    border:1px solid rgba(239,68,68,.35);
+}
+
+.feedback.neutral{
+    display:block;
+    background:rgba(37,99,235,.11);
+    border:1px solid rgba(37,99,235,.28);
+}
+
+textarea{
+    width:100%;
+    min-height:155px;
+    padding:15px;
+    border-radius:16px;
+    border:1px solid var(--border);
+    background:transparent;
+    color:var(--text);
+    resize:vertical;
+    outline:none;
+    line-height:1.55;
+}
+
+.exam-layout{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:24px;
+}
+
+.timer{
+    text-align:center;
+    padding:30px;
+    border-radius:28px;
+    color:white;
+    background:linear-gradient(135deg,#111827,#2563eb);
+    box-shadow:var(--shadow);
+}
+
+.timer-number{
+    font-size:58px;
+    font-weight:950;
+    letter-spacing:-2px;
+}
+
+.exam-question{
+    margin-bottom:16px;
+    padding:18px;
+    border-radius:18px;
+    background:rgba(37,99,235,.06);
+    border:1px solid var(--border);
+}
+
+.listen-box{
+    background:linear-gradient(135deg,#7c3aed,#2563eb);
+    color:white;
+    border-radius:28px;
+    padding:28px;
+    box-shadow:var(--shadow);
+}
+
+.listen-box p{
+    line-height:1.7;
+}
+
+.wave{
+    display:flex;
+    gap:5px;
+    height:48px;
+    align-items:end;
+    margin:24px 0;
+}
+
+.wave span{
+    width:9px;
+    border-radius:999px;
+    background:white;
+    animation:wave 1s infinite ease-in-out;
+}
+
+.wave span:nth-child(2){animation-delay:.1s}
+.wave span:nth-child(3){animation-delay:.2s}
+.wave span:nth-child(4){animation-delay:.3s}
+.wave span:nth-child(5){animation-delay:.4s}
+.wave span:nth-child(6){animation-delay:.5s}
+
+@keyframes wave{
+    0%,100%{height:12px;opacity:.55}
+    50%{height:46px;opacity:1}
+}
+
+.speaking-prompt{
+    background:linear-gradient(135deg,#f59e0b,#facc15);
+    color:#111827;
+    border-radius:28px;
+    padding:28px;
+    box-shadow:var(--shadow);
+}
+
+.challenge{
+    background:linear-gradient(135deg,#06b6d4,#10b981);
+    color:white;
+    border-radius:28px;
+    padding:28px;
+    box-shadow:var(--shadow);
+}
+
+.chatbot{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    z-index:60;
+    width:370px;
+    max-width:calc(100vw - 40px);
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:26px;
+    overflow:hidden;
+    box-shadow:0 28px 90px rgba(0,0,0,.28);
+}
+
+.chat-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:16px;
+    background:linear-gradient(90deg,var(--primary),var(--primary2));
+    color:white;
+}
+
+.close-chat{
+    display:grid;
+    place-items:center;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:rgba(255,255,255,.2);
+    color:white;
+    font-size:18px;
+}
+
+.chat-body{
+    height:315px;
+    padding:16px;
+    overflow-y:auto;
+    font-size:14px;
+}
+
+.message{
+    max-width:86%;
+    padding:10px 12px;
+    border-radius:16px;
+    margin-bottom:10px;
+    line-height:1.45;
+}
+
+.bot{
+    background:rgba(37,99,235,.11);
+    color:var(--text);
+    border-bottom-left-radius:4px;
+}
+
+.user{
+    margin-left:auto;
+    background:var(--primary);
+    color:white;
+    border-bottom-right-radius:4px;
+}
+
+.chat-input{
+    display:flex;
+    border-top:1px solid var(--border);
+}
+
+.chat-input input{
+    flex:1;
+    padding:14px;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:var(--text);
+}
+
+.chat-input button{
+    padding:0 16px;
+    background:var(--primary);
+    color:white;
+    font-weight:900;
+}
+
+.open-chat{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    z-index:59;
+    display:none;
+    width:66px;
+    height:66px;
+    border-radius:50%;
+    font-size:28px;
+    background:linear-gradient(135deg,var(--primary),var(--primary2));
+    color:white;
+    box-shadow:0 20px 48px rgba(37,99,235,.35);
+}
+
+.video-script{
+    line-height:1.85;
+}
+
+.video-script strong{
+    color:var(--primary);
+}
+
+.github-list{
+    list-style:none;
+    padding:0;
+    counter-reset:item;
+}
+
+.github-list li{
+    counter-increment:item;
+    margin-bottom:14px;
+    padding:16px;
+    border-radius:16px;
+    background:rgba(37,99,235,.07);
+    border:1px solid var(--border);
+}
+
+.github-list li::before{
+    content:counter(item);
+    display:inline-grid;
+    place-items:center;
+    width:28px;
+    height:28px;
+    margin-right:10px;
+    border-radius:50%;
+    background:var(--primary);
+    color:white;
+    font-weight:900;
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(34px);
+    transition:.75s;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:30px;
+    transform:translateX(-50%);
+    z-index:1000;
+    padding:14px 20px;
+    border-radius:999px;
+    background:#111827;
+    color:white;
+    font-weight:900;
+    box-shadow:0 18px 45px rgba(0,0,0,.25);
+}
+
+.confetti{
+    position:fixed;
+    top:-12px;
+    width:10px;
+    height:10px;
+    z-index:999;
+    animation:fall 2.8s linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(105vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+footer{
+    margin-top:65px;
+    padding:35px 7vw;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:22px;
+    text-align:left;
+    margin-bottom:22px;
+}
+
+.small{
+    color:var(--muted);
+    font-size:13px;
+}
+
+@media(max-width:1100px){
+    .hero,
+    .grid-2,
+    .trainer-box,
+    .exam-layout{
+        grid-template-columns:1fr;
+    }
+
+    .dashboard,
+    .grid-3{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .route{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+
+    .route-step::after{
+        display:none;
+    }
+}
+
+@media(max-width:700px){
+    header{
+        padding:22px 5vw 80px;
+    }
+
+    main{
+        padding:48px 5vw;
+    }
+
+    .header-top{
+        flex-direction:column;
+        align-items:flex-start;
+        margin-bottom:42px;
+    }
+
+    .dashboard,
+    .grid-3,
+    .route,
+    .mini-grid,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .dashboard{
+        margin-top:-85px;
+    }
+
+    .hero h1{
+        letter-spacing:-1px;
+    }
+
+    .chatbot{
+        right:10px;
+        bottom:10px;
+        width:calc(100vw - 20px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header id="inicio">
+    <div class="binary">1010 ENGLISH</div>
+    <div class="binary">GRAMMAR++</div>
+    <div class="binary">PAU MODE</div>
+    <div class="binary">B2 READY</div>
+
+    <div class="header-top">
+        <a href="#inicio" class="logo">
+            <span>E</span>
+            EnglishMaster PAU
+        </a>
+
+        <nav class="nav">
+            <a href="#skills">Skills</a>
+            <a href="#ruta">Ruta</a>
+            <a href="#grammar">Grammar</a>
+            <a href="#vocab">Vocabulary</a>
+            <a href="#writing">Writing</a>
+            <a href="#exam">Exam Mode</a>
+            <button class="theme-toggle" id="themeBtn">🌙 Dark Mode</button>
+        </nav>
+    </div>
+
+    <section class="hero">
+        <div>
+            <h1>Domina Inglés de 2º Bach y llega a la <span>PAU</span> preparado</h1>
+            <p>
+                Plataforma interactiva para estudiar inglés: grammar trainer, vocabulary,
+                reading, writing, listening, speaking, use of English, modo examen,
+                sistema de XP, racha, progreso y tutor digital.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#placement" class="btn primary">Hacer diagnóstico</a>
+                <a href="#exam" class="btn yellow">Modo examen</a>
+                <a href="#grammar" class="btn ghost">Practicar grammar</a>
+            </div>
+        </div>
+
+        <div class="hero-panel">
+            <div class="level-card">
+                <h3>Your English Progress</h3>
+                <div class="big-number"><span id="xpHero">0</span> XP</div>
+                <p class="small">El progreso se guarda en este navegador.</p>
+                <div class="progress-box">
+                    <div class="progress-bar" id="heroProgress"></div>
+                </div>
+            </div>
+
+            <div class="mini-grid">
+                <div class="mini-stat">
+                    <b id="bestScoreHero">0%</b>
+                    Best test
+                </div>
+                <div class="mini-stat">
+                    <b id="levelHero">1</b>
+                    Level
+                </div>
+                <div class="mini-stat">
+                    <b id="wordsHero">0</b>
+                    Words
+                </div>
+                <div class="mini-stat">
+                    <b id="streakHero">0</b>
+                    Streak
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+
+<main>
+
+<section class="dashboard reveal">
+    <article class="stat">
+        <div class="icon">🧠</div>
+        <b>B2</b>
+        <span>nivel objetivo PAU</span>
+    </article>
+
+    <article class="stat">
+        <div class="icon">✍️</div>
+        <b>Writing</b>
+        <span>essay checker</span>
+    </article>
+
+    <article class="stat">
+        <div class="icon">🎧</div>
+        <b>Listening</b>
+        <span>voz del navegador</span>
+    </article>
+
+    <article class="stat">
+        <div class="icon">⚡</div>
+        <b>XP</b>
+        <span>gamificación real</span>
+    </article>
+</section>
+
+<section id="skills" class="reveal" style="margin-top:75px;">
+    <h2 class="section-title">Todo lo que necesitas para Inglés de 2º Bach</h2>
+    <p class="section-subtitle">
+        La web está diseñada como un entrenador completo: no solo enseña teoría,
+        también te hace practicar, corregir, medir tu progreso y prepararte para el examen.
+    </p>
+
+    <div class="grid-3" id="skillsContainer"></div>
+</section>
+
+<section id="ruta" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Ruta inteligente de estudio</h2>
+    <p class="section-subtitle">
+        Esta ruta sirve para estudiar con orden y no perder tiempo. Está pensada para
+        mejorar las partes más habituales del examen de inglés.
+    </p>
+
+    <div class="route">
+        <div class="route-step">
+            <b>1</b>
+            <h3>Grammar</h3>
+            <p>Domina tiempos verbales, conditionals, passive voice y reported speech.</p>
+        </div>
+
+        <div class="route-step">
+            <b>2</b>
+            <h3>Vocabulary</h3>
+            <p>Aprende conectores, phrasal verbs, false friends y word formation.</p>
+        </div>
+
+        <div class="route-step">
+            <b>3</b>
+            <h3>Use of English</h3>
+            <p>Practica transformación de frases y huecos tipo examen.</p>
+        </div>
+
+        <div class="route-step">
+            <b>4</b>
+            <h3>Reading</h3>
+            <p>Entrena comprensión lectora y localización de ideas clave.</p>
+        </div>
+
+        <div class="route-step">
+            <b>5</b>
+            <h3>Writing</h3>
+            <p>Aprende a escribir essays, emails y opinion texts con conectores.</p>
+        </div>
+
+        <div class="route-step">
+            <b>6</b>
+            <h3>Exam Mode</h3>
+            <p>Simula un examen real con tiempo, corrección y nota orientativa.</p>
+        </div>
+    </div>
+</section>
+
+<section id="placement" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Diagnóstico inicial</h2>
+    <p class="section-subtitle">
+        Responde este test rápido y la web te dirá qué debes mejorar primero.
+    </p>
+
+    <div class="card">
+        <div id="placementContainer"></div>
+
+        <button class="btn blue" onclick="correctPlacement()">Corregir diagnóstico</button>
+        <button class="btn yellow" onclick="resetPlacement()">Reiniciar</button>
+
+        <div id="placementResult" class="feedback neutral"></div>
+
+        <div style="margin-top:20px;">
+            <div class="progress-box">
+                <div class="progress-bar" id="placementBar"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="grammar" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Grammar Trainer</h2>
+    <p class="section-subtitle">
+        Ejercicios clave de 2º Bachillerato: verb tenses, conditionals, passive voice,
+        reported speech y relative clauses.
+    </p>
+
+    <div class="grid-2">
+        <div class="card">
+            <h3>Fill in the gaps</h3>
+            <div id="grammarContainer"></div>
+            <button class="btn blue" onclick="correctGrammar()">Comprobar Grammar</button>
+            <button class="btn soft" onclick="showGrammarSolutions()">Ver soluciones</button>
+            <div id="grammarFeedback" class="feedback neutral"></div>
+        </div>
+
+        <div class="card">
+            <h3>Chuleta inteligente de examen</h3>
+            <ul style="line-height:1.85;">
+                <li><strong>Present Perfect:</strong> have/has + past participle.</li>
+                <li><strong>Past Perfect:</strong> had + past participle.</li>
+                <li><strong>Passive:</strong> be + past participle.</li>
+                <li><strong>Third Conditional:</strong> if + past perfect, would have + participle.</li>
+                <li><strong>Reported Speech:</strong> cambia tiempos, pronombres y referencias temporales.</li>
+                <li><strong>Relative Clauses:</strong> who, which, that, where, whose.</li>
+            </ul>
+
+            <div class="tip">
+                <strong>Truco PAU:</strong> antes de responder, identifica si la frase habla
+                de pasado, presente, hipótesis, voz pasiva o estilo indirecto.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="vocab" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Vocabulary Flashcards</h2>
+    <p class="section-subtitle">
+        Pulsa la tarjeta para ver significado, ejemplo y traducción. Si la sabes,
+        ganas XP y sube tu progreso.
+    </p>
+
+    <div class="trainer-box">
+        <div>
+            <div class="flash-card" onclick="flipVocabCard()">
+                <div>
+                    <h3 id="vocabTitle">Vocabulary</h3>
+                    <p id="vocabText">Pulsa “Nueva palabra” para empezar.</p>
+                </div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;">
+                <button class="btn yellow" onclick="newVocabCard()">Nueva palabra</button>
+                <button class="btn blue" onclick="markWordKnown()">La sabía ✅</button>
+                <button class="btn soft" onclick="flipVocabCard()">Girar tarjeta</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Bloques de vocabulario que suelen servir</h3>
+            <ul style="line-height:1.85;">
+                <li>Education: degree, subject, skills, marks, homework.</li>
+                <li>Technology: device, privacy, screen time, social media.</li>
+                <li>Environment: pollution, climate change, renewable energy.</li>
+                <li>Society: equality, unemployment, young people, mental health.</li>
+                <li>Connectors: however, therefore, moreover, although, in addition.</li>
+            </ul>
+
+            <div class="progress-box">
+                <div class="progress-bar" id="vocabProgress"></div>
+            </div>
+
+            <p class="small"><span id="wordsCounter">0</span> palabras dominadas.</p>
+        </div>
+    </div>
+</section>
+
+<section id="useenglish" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Use of English: transformación de frases</h2>
+    <p class="section-subtitle">
+        Esta parte parece difícil, pero se domina con patrones. Practica como en examen.
+    </p>
+
+    <div class="card">
+        <div id="transformContainer"></div>
+        <button class="btn blue" onclick="correctTransform()">Corregir transformaciones</button>
+        <button class="btn soft" onclick="showTransformSolutions()">Ver soluciones</button>
+        <div id="transformFeedback" class="feedback neutral"></div>
+    </div>
+</section>
+
+<section id="reading" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Reading Practice</h2>
+    <p class="section-subtitle">
+        Texto breve con preguntas tipo comprensión lectora. Entrena localización de información,
+        inferencia y vocabulario por contexto.
+    </p>
+
+    <div class="grid-2">
+        <div class="card">
+            <h3>Text: Teenagers and Technology</h3>
+            <p style="line-height:1.8;">
+                Technology has changed the way teenagers study, communicate and spend their free time.
+                On the one hand, digital tools can make learning faster and more flexible. Students can
+                watch videos, check dictionaries and work with classmates online. On the other hand,
+                excessive screen time may affect concentration, sleep and real social interaction.
+                For this reason, experts recommend using technology consciously instead of banning it completely.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Questions</h3>
+            <div id="readingContainer"></div>
+            <button class="btn blue" onclick="correctReading()">Corregir Reading</button>
+            <div id="readingFeedback" class="feedback neutral"></div>
+        </div>
+    </div>
+</section>
+
+<section id="listening" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Listening con voz del navegador</h2>
+    <p class="section-subtitle">
+        Esta función usa JavaScript y la voz del navegador para simular un listening.
+        Dale a reproducir, escucha y responde.
+    </p>
+
+    <div class="grid-2">
+        <div class="listen-box">
+            <h3>Listening: A student talking about exams</h3>
+
+            <div class="wave">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+
+            <p>
+                Pulsa el botón y escucha el audio generado por el navegador. Si tu navegador
+                no reproduce voz, puedes usar el texto oculto desde el botón de ayuda.
+            </p>
+
+            <button class="btn primary" onclick="playListening()">▶ Reproducir listening</button>
+            <button class="btn ghost" onclick="toggleTranscript()">Ver/Ocultar transcripción</button>
+
+            <p id="transcript" style="display:none;margin-top:18px;">
+                I used to feel very nervous before English exams, but I improved when I started planning my study time.
+                Now I practise grammar for twenty minutes, read short texts and write one paragraph every day.
+                My advice is simple: do not memorise everything the night before the exam.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Listening Questions</h3>
+            <div id="listeningContainer"></div>
+            <button class="btn blue" onclick="correctListening()">Corregir Listening</button>
+            <div id="listeningFeedback" class="feedback neutral"></div>
+        </div>
+    </div>
+</section>
+
+<section id="writing" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Writing Checker</h2>
+    <p class="section-subtitle">
+        Escribe un opinion essay y la web analiza longitud, conectores, estructura,
+        vocabulario útil y claridad. No es una IA real, pero parece una herramienta avanzada.
+    </p>
+
+    <div class="grid-2">
+        <div class="card">
+            <h3>Task</h3>
+            <p>
+                Write an opinion essay: <strong>“Should students use artificial intelligence to study?”</strong>
+            </p>
+
+            <textarea id="writingText" placeholder="Write your essay here..."></textarea>
+
+            <br><br>
+            <button class="btn blue" onclick="checkWriting()">Analizar Writing</button>
+            <button class="btn soft" onclick="insertWritingTemplate()">Insertar plantilla</button>
+
+            <div id="writingFeedback" class="feedback neutral"></div>
+        </div>
+
+        <div class="card">
+            <h3>Plantilla para un essay de 10</h3>
+            <p style="line-height:1.8;">
+                <strong>Introduction:</strong> Present the topic and your opinion.<br>
+                <strong>First argument:</strong> Explain one clear reason.<br>
+                <strong>Second argument:</strong> Add another reason or example.<br>
+                <strong>Counterargument:</strong> Mention the opposite view.<br>
+                <strong>Conclusion:</strong> Summarise your opinion.
+            </p>
+
+            <div class="tip">
+                <strong>Connectors top:</strong> Firstly, Moreover, However, In my opinion,
+                For instance, As a result, To sum up.
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="speaking" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Speaking Practice</h2>
+    <p class="section-subtitle">
+        Genera un tema oral y practica una respuesta de 45 segundos.
+    </p>
+
+    <div class="grid-2">
+        <div class="speaking-prompt">
+            <h3>Speaking prompt</h3>
+            <p id="speakingPrompt">Pulsa para generar un tema.</p>
+            <button class="btn primary" onclick="newSpeakingPrompt()">Nuevo tema</button>
+            <button class="btn ghost" onclick="startSpeakingTimer()">⏱️ 45 segundos</button>
+            <h2 id="speakingTimer">00:45</h2>
+        </div>
+
+        <div class="card">
+            <h3>Useful speaking structure</h3>
+            <ul style="line-height:1.85;">
+                <li><strong>Opinion:</strong> In my opinion...</li>
+                <li><strong>Reason:</strong> The main reason is that...</li>
+                <li><strong>Example:</strong> For example...</li>
+                <li><strong>Contrast:</strong> However...</li>
+                <li><strong>Conclusion:</strong> To sum up...</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="exam" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Modo Examen PAU</h2>
+    <p class="section-subtitle">
+        Simulacro con temporizador, grammar, reading y writing. Pensado para demostrar
+        funcionalidad avanzada en el proyecto.
+    </p>
+
+    <div class="exam-layout">
+        <aside class="timer">
+            <h3>Exam Timer</h3>
+            <div class="timer-number" id="examTimer">15:00</div>
+            <p>Mini simulacro de 15 minutos.</p>
+            <button class="btn yellow" onclick="startExam()">Empezar</button>
+            <button class="btn ghost" onclick="resetExam()">Reiniciar</button>
+        </aside>
+
+        <div class="card">
+            <div class="exam-question">
+                <h3>1. Grammar</h3>
+                <p>Rewrite: “They built this school in 1998.” Use passive voice.</p>
+                <input id="examGrammar" style="width:100%;padding:13px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--text);">
+            </div>
+
+            <div class="exam-question">
+                <h3>2. Use of English</h3>
+                <p>Complete: If I had studied harder, I ______ passed the exam.</p>
+                <input id="examUse" style="width:100%;padding:13px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--text);">
+            </div>
+
+            <div class="exam-question">
+                <h3>3. Writing</h3>
+                <p>Write 80-120 words about the advantages and disadvantages of social media.</p>
+                <textarea id="examWriting"></textarea>
+            </div>
+
+            <button class="btn blue" onclick="correctExam()">Corregir simulacro</button>
+            <div id="examFeedback" class="feedback neutral"></div>
+        </div>
+    </div>
+</section>
+
+<section id="daily" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Daily Challenge</h2>
+    <p class="section-subtitle">
+        Reto diario para practicar un poco cada día y ganar XP.
+    </p>
+
+    <div class="grid-2">
+        <div class="challenge">
+            <h3>Today's mission</h3>
+            <p id="challengeText">Pulsa para generar un reto.</p>
+            <button class="btn primary" onclick="newChallenge()">Nuevo reto</button>
+            <button class="btn ghost" onclick="completeChallenge()">Marcar completado</button>
+        </div>
+
+        <div class="card">
+            <h3>Plan recomendado</h3>
+            <p id="studyPlan">
+                Haz el diagnóstico inicial para recibir una recomendación personalizada.
+            </p>
+
+            <ul style="line-height:1.85;">
+                <li>Menos de 50%: repasa grammar y vocabulary.</li>
+                <li>Entre 50% y 80%: practica use of English y reading.</li>
+                <li>Más de 80%: céntrate en writing y exam mode.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="presentation" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Presentación publicitaria del proyecto</h2>
+    <p class="section-subtitle">
+        Guion para grabar el vídeo que pide la tarea.
+    </p>
+
+    <div class="grid-2">
+        <div class="card video-script">
+            <h3>Guion del vídeo</h3>
+            <p>
+                <strong>1. Introducción:</strong> “EnglishMaster PAU es una web creada para
+                ayudar a estudiantes de 2º Bachillerato a preparar inglés de forma interactiva.”
+            </p>
+            <p>
+                <strong>2. Problema:</strong> “Muchas webs solo muestran teoría, pero aquí el
+                alumno practica, recibe corrección y ve su progreso.”
+            </p>
+            <p>
+                <strong>3. Funciones:</strong> “Incluye grammar trainer, vocabulary flashcards,
+                reading, listening, speaking, writing checker, modo examen, XP y tutor.”
+            </p>
+            <p>
+                <strong>4. Originalidad:</strong> “La web funciona como un entrenador personal
+                de inglés, no como una simple página de apuntes.”
+            </p>
+            <p>
+                <strong>5. Cierre:</strong> “Con EnglishMaster PAU estudiar inglés es más visual,
+                más rápido y más parecido a un examen real.”
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Checklist para entregar</h3>
+            <ul style="line-height:1.9;">
+                <li>Guardar el archivo como <strong>index.html</strong>.</li>
+                <li>Crear carpeta: <strong>nicolas_englishmasterpau</strong>.</li>
+                <li>Añadir archivo <strong>descripcion.txt</strong>.</li>
+                <li>Subir el proyecto a GitHub.</li>
+                <li>Hacer commits por fases.</li>
+                <li>Grabar vídeo enseñando las funciones.</li>
+                <li>Presentarlo como versión final, no como versión sin acabar.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="github" class="reveal" style="margin-top:85px;">
+    <h2 class="section-title">Control de versiones con GitHub</h2>
+    <p class="section-subtitle">
+        Para sacar buena nota en la parte de Git, haz commits separados.
+    </p>
+
+    <div class="card">
+        <ol class="github-list">
+            <li><strong>Commit 1:</strong> estructura HTML inicial.</li>
+            <li><strong>Commit 2:</strong> diseño visual, colores, tarjetas y menú.</li>
+            <li><strong>Commit 3:</strong> grammar trainer y vocabulary flashcards.</li>
+            <li><strong>Commit 4:</strong> reading, listening, speaking y writing checker.</li>
+            <li><strong>Commit 5:</strong> modo examen, XP, tutor y versión final.</li>
+        </ol>
+    </div>
+</section>
+
+</main>
+
+<div class="chatbot" id="chatbot">
+    <div class="chat-header">
+        <b>🤖 English Tutor</b>
+        <button class="close-chat" onclick="toggleChat()">×</button>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <div class="message bot">
+            Hi! Ask me about: present perfect, conditionals, passive voice,
+            reported speech, writing, connectors, vocabulary or exam tips.
+        </div>
+    </div>
+
+    <div class="chat-input">
+        <input id="chatInput" placeholder="Ask your English tutor..." onkeydown="if(event.key==='Enter')sendTutorMessage()">
+        <button onclick="sendTutorMessage()">Send</button>
+    </div>
+</div>
+
+<button class="open-chat" id="openChat" onclick="toggleChat()">🤖</button>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h3>EnglishMaster PAU</h3>
+            <p>Interactive English project for 2º Bachillerato.</p>
+        </div>
+
+        <div>
+            <h3>Autores</h3>
+            <p>Nicolás Amarelle Facal<br>Lucas López Ramos</p>
+        </div>
+
+        <div>
+            <h3>Curso</h3>
+            <p>Proyecto Final TIC · 2026 · Versión final</p>
+        </div>
+    </div>
+
+    <p>Proyecto Final TIC • EnglishMaster PAU • 2026</p>
+</footer>
+
+<script>
+const skills = [
+    {
+        icon:"🧠",
+        title:"Grammar",
+        tag:"Core",
+        points:[
+            "Verb tenses: present, past, future and perfect forms.",
+            "Conditionals: zero, first, second, third and mixed.",
+            "Passive voice and reported speech.",
+            "Relative clauses and modal verbs."
+        ],
+        tip:"En PAU, la grammar se gana reconociendo patrones, no memorizando frases sueltas."
+    },
+    {
+        icon:"📚",
+        title:"Vocabulary",
+        tag:"B2 words",
+        points:[
+            "Connectors for essays.",
+            "Phrasal verbs and collocations.",
+            "False friends.",
+            "Education, technology, environment and society."
+        ],
+        tip:"Usa vocabulario variado en writing: no repitas always, good, bad, people."
+    },
+    {
+        icon:"✍️",
+        title:"Writing",
+        tag:"Essay",
+        points:[
+            "Opinion essay.",
+            "For and against essay.",
+            "Formal and informal email.",
+            "Clear paragraphs and connectors."
+        ],
+        tip:"Un writing bueno tiene estructura clara: introducción, argumentos y conclusión."
+    },
+    {
+        icon:"📖",
+        title:"Reading",
+        tag:"Comprehension",
+        points:[
+            "Locate specific information.",
+            "Understand general meaning.",
+            "Infer ideas from context.",
+            "Guess vocabulary from the sentence."
+        ],
+        tip:"Primero lee preguntas, después busca respuestas. No traduzcas todo palabra por palabra."
+    },
+    {
+        icon:"🎧",
+        title:"Listening",
+        tag:"Audio",
+        points:[
+            "Understand main ideas.",
+            "Identify details.",
+            "Recognise attitude and intention.",
+            "Train concentration."
+        ],
+        tip:"Antes de escuchar, predice el tema por el título y las preguntas."
+    },
+    {
+        icon:"🎤",
+        title:"Speaking",
+        tag:"Fluency",
+        points:[
+            "Give opinions.",
+            "Justify answers.",
+            "Use examples.",
+            "Speak with connectors."
+        ],
+        tip:"No busques frases perfectas: busca hablar claro, ordenado y con conectores."
+    }
+];
+
+const placement = [
+    {
+        q:"Choose the correct sentence:",
+        options:["I have seen this film yesterday.","I saw this film yesterday.","I see this film yesterday.","I am saw this film."],
+        correct:1,
+        explain:"With yesterday we normally use Past Simple."
+    },
+    {
+        q:"Complete: If I won the lottery, I ____ travel around the world.",
+        options:["will","would","have","had"],
+        correct:1,
+        explain:"Second conditional: If + past simple, would + infinitive."
+    },
+    {
+        q:"Passive voice: They make cars in Germany.",
+        options:["Cars are made in Germany.","Cars is made in Germany.","Cars made in Germany.","Cars were make in Germany."],
+        correct:0,
+        explain:"Present passive: am/is/are + past participle."
+    },
+    {
+        q:"Reported speech: He said, “I am tired.”",
+        options:["He said he is tired.","He said he was tired.","He said I was tired.","He said he tired."],
+        correct:1,
+        explain:"Reported speech usually moves the tense back: am → was."
+    },
+    {
+        q:"Best connector for contrast:",
+        options:["Moreover","However","Therefore","For example"],
+        correct:1,
+        explain:"However introduces contrast."
+    }
+];
+
+const grammarItems = [
+    {
+        sentence:"I ______ English for six years. (study)",
+        answer:["have studied","have been studying"],
+        solution:"have studied / have been studying",
+        explanation:"Use Present Perfect because the action started in the past and continues now."
+    },
+    {
+        sentence:"If she ______ more time, she would travel more. (have)",
+        answer:["had"],
+        solution:"had",
+        explanation:"Second conditional: If + Past Simple, would + infinitive."
+    },
+    {
+        sentence:"This book ______ by George Orwell. (write)",
+        answer:["was written"],
+        solution:"was written",
+        explanation:"Past passive: was/were + past participle."
+    },
+    {
+        sentence:"He said that he ______ tired. (be)",
+        answer:["was"],
+        solution:"was",
+        explanation:"Reported speech: am/is usually changes to was."
+    },
+    {
+        sentence:"The girl ______ lives next door is my friend.",
+        answer:["who","that"],
+        solution:"who / that",
+        explanation:"For people, use who or that."
+    }
+];
+
+const vocabCards = [
+    {
+        word:"Although",
+        meaning:"Aunque",
+        example:"Although it was raining, we went out."
+    },
+    {
+        word:"However",
+        meaning:"Sin embargo",
+        example:"The idea is interesting. However, it is expensive."
+    },
+    {
+        word:"Moreover",
+        meaning:"Además",
+        example:"The app is useful. Moreover, it is free."
+    },
+    {
+        word:"Environment",
+        meaning:"Medio ambiente",
+        example:"We must protect the environment."
+    },
+    {
+        word:"Achievement",
+        meaning:"Logro",
+        example:"Passing the exam was a great achievement."
+    },
+    {
+        word:"To put off",
+        meaning:"Posponer",
+        example:"We had to put off the meeting."
+    },
+    {
+        word:"Reliable",
+        meaning:"Fiable",
+        example:"This website is reliable."
+    },
+    {
+        word:"Actually",
+        meaning:"En realidad",
+        example:"Actually, I do not agree."
+    },
+    {
+        word:"Eventually",
+        meaning:"Finalmente, con el tiempo",
+        example:"Eventually, he found a solution."
+    },
+    {
+        word:"To sum up",
+        meaning:"En resumen",
+        example:"To sum up, technology can be very useful."
+    }
+];
+
+const transforms = [
+    {
+        prompt:"Rewrite using passive: They built the bridge in 2005.",
+        answer:["the bridge was built in 2005"],
+        solution:"The bridge was built in 2005."
+    },
+    {
+        prompt:"Rewrite using reported speech: Mary said, “I love English.”",
+        answer:["mary said that she loved english","mary said she loved english"],
+        solution:"Mary said that she loved English."
+    },
+    {
+        prompt:"Rewrite using second conditional: I do not have money, so I cannot buy a car.",
+        answer:["if i had money i would buy a car","if i had the money i would buy a car"],
+        solution:"If I had money, I would buy a car."
+    },
+    {
+        prompt:"Rewrite using although: It was cold. We went swimming.",
+        answer:["although it was cold we went swimming"],
+        solution:"Although it was cold, we went swimming."
+    }
+];
+
+const readingQuestions = [
+    {
+        q:"What is one advantage of technology according to the text?",
+        options:["It makes students sleep more.","It can make learning faster and more flexible.","It bans social interaction.","It replaces all teachers."],
+        correct:1
+    },
+    {
+        q:"What problem can excessive screen time cause?",
+        options:["Better concentration.","More sleep.","Problems with concentration and sleep.","More real social interaction."],
+        correct:2
+    },
+    {
+        q:"What do experts recommend?",
+        options:["Banning all technology.","Using technology consciously.","Studying only with books.","Avoiding online dictionaries."],
+        correct:1
+    }
+];
+
+const listeningQuestions = [
+    {
+        q:"How did the student improve?",
+        options:["By planning study time.","By studying only the night before.","By avoiding grammar.","By not writing."],
+        correct:0
+    },
+    {
+        q:"How long does the student practise grammar?",
+        options:["Five minutes.","Twenty minutes.","Two hours.","All day."],
+        correct:1
+    },
+    {
+        q:"What is the advice?",
+        options:["Memorise everything the night before.","Do not study English.","Do not memorise everything the night before.","Only watch videos."],
+        correct:2
+    }
+];
+
+const speakingPrompts = [
+    "Do you think social media has more advantages or disadvantages?",
+    "Should students have less homework?",
+    "Is artificial intelligence useful for learning English?",
+    "What are the benefits of travelling abroad?",
+    "Should schools teach more practical skills?",
+    "How can young people protect the environment?",
+    "Do you prefer online learning or traditional classes?",
+    "What is more important: talent or hard work?"
+];
+
+const challenges = [
+    "Write 5 sentences using Present Perfect.",
+    "Learn 5 connectors and use them in one paragraph.",
+    "Transform 3 active sentences into passive voice.",
+    "Record yourself speaking for 45 seconds about technology.",
+    "Write a short opinion paragraph using however and moreover.",
+    "Read a short English text and underline 5 key words.",
+    "Make a list of 8 false friends.",
+    "Do the Exam Mode and improve your result."
+];
+
+let stats = {
+    xp:0,
+    bestScore:0,
+    level:1,
+    wordsKnown:0,
+    streak:0,
+    lastVisit:"",
+    challengeDone:false
+};
+
+let currentVocab = null;
+let showingVocabAnswer = false;
+let examInterval = null;
+let examSeconds = 900;
+let speakingInterval = null;
+let speakingSeconds = 45;
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadStats();
+    updateDailyStreak();
+    renderSkills();
+    renderPlacement();
+    renderGrammar();
+    renderTransform();
+    renderReading();
+    renderListening();
+    newVocabCard();
+    newSpeakingPrompt();
+    newChallenge();
+    updateStatsUI();
+    setupReveal();
+    loadTheme();
+});
+
+function loadStats(){
+    const saved = localStorage.getItem("englishmaster_stats");
+    if(saved){
+        stats = JSON.parse(saved);
+    }
+}
+
+function saveStats(){
+    localStorage.setItem("englishmaster_stats", JSON.stringify(stats));
+}
+
+function updateDailyStreak(){
+    const today = new Date().toLocaleDateString();
+
+    if(stats.lastVisit !== today){
+        stats.streak++;
+        stats.lastVisit = today;
+        addXP(5,false);
+        saveStats();
+    }
+}
+
+function addXP(amount, show=true){
+    stats.xp += amount;
+    stats.level = Math.max(1, Math.floor(stats.xp / 100) + 1);
+    saveStats();
+    updateStatsUI();
+
+    if(show){
+        showToast("+" + amount + " XP");
+    }
+}
+
+function updateStatsUI(){
+    document.getElementById("xpHero").textContent = stats.xp;
+    document.getElementById("bestScoreHero").textContent = stats.bestScore + "%";
+    document.getElementById("levelHero").textContent = stats.level;
+    document.getElementById("wordsHero").textContent = stats.wordsKnown;
+    document.getElementById("streakHero").textContent = stats.streak;
+
+    document.getElementById("heroProgress").style.width = Math.min(100, stats.xp % 100) + "%";
+    document.getElementById("vocabProgress").style.width = Math.min(100, (stats.wordsKnown / vocabCards.length) * 100) + "%";
+    document.getElementById("wordsCounter").textContent = stats.wordsKnown;
+}
+
+function renderSkills(){
+    const container = document.getElementById("skillsContainer");
+    container.innerHTML = "";
+
+    skills.forEach(skill => {
+        const article = document.createElement("article");
+        article.className = "card skill-card";
+
+        article.innerHTML = `
+            <span class="badge">${skill.icon} ${skill.tag}</span>
+            <h3>${skill.title}</h3>
+            <ul>
+                ${skill.points.map(p => `<li>${p}</li>`).join("")}
+            </ul>
+            <div class="tip"><strong>Exam tip:</strong> ${skill.tip}</div>
+        `;
+
+        container.appendChild(article);
+    });
+}
+
+function renderPlacement(){
+    const container = document.getElementById("placementContainer");
+    container.innerHTML = "";
+
+    placement.forEach((item,index) => {
+        const div = document.createElement("div");
+        div.className = "practice-question";
+
+        div.innerHTML = `
+            <h3>${index + 1}. ${item.q}</h3>
+            ${item.options.map((op,i) => `
+                <label class="option">
+                    <input type="radio" name="pl${index}" value="${i}">
+                    ${op}
+                </label>
+            `).join("")}
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+function correctPlacement(){
+    let points = 0;
+    let html = "";
+
+    placement.forEach((item,index) => {
+        const selected = document.querySelector(`input[name="pl${index}"]:checked`);
+
+        if(selected && Number(selected.value) === item.correct){
+            points++;
+            html += `<p>✅ <strong>Question ${index + 1}:</strong> correct. ${item.explain}</p>`;
+        }else{
+            html += `<p>❌ <strong>Question ${index + 1}:</strong> incorrect. ${item.explain}</p>`;
+        }
+    });
+
+    const percent = Math.round((points / placement.length) * 100);
+    const result = document.getElementById("placementResult");
+
+    result.className = percent >= 60 ? "feedback good" : "feedback bad";
+    result.innerHTML = `
+        <h3>Result: ${points}/${placement.length} · ${percent}%</h3>
+        <p>${getPlan(percent)}</p>
+        ${html}
+    `;
+
+    document.getElementById("placementBar").style.width = percent + "%";
+
+    if(percent > stats.bestScore){
+        stats.bestScore = percent;
+    }
+
+    if(percent >= 80){
+        addXP(50);
+        confetti();
+    }else if(percent >= 50){
+        addXP(30);
+    }else{
+        addXP(15);
+    }
+
+    document.getElementById("studyPlan").textContent = getPlan(percent);
+    saveStats();
+    updateStatsUI();
+}
+
+function getPlan(percent){
+    if(percent >= 85){
+        return "Excellent level. Focus on writing quality, advanced vocabulary and exam timing.";
+    }
+
+    if(percent >= 65){
+        return "Good level. Review conditionals, passive voice and connectors.";
+    }
+
+    if(percent >= 45){
+        return "Medium level. Practise grammar basics and vocabulary before doing Exam Mode.";
+    }
+
+    return "Initial level. Start with Grammar Trainer and Vocabulary Flashcards.";
+}
+
+function resetPlacement(){
+    renderPlacement();
+    document.getElementById("placementResult").className = "feedback neutral";
+    document.getElementById("placementResult").style.display = "none";
+    document.getElementById("placementBar").style.width = "0%";
+}
+
+function renderGrammar(){
+    const container = document.getElementById("grammarContainer");
+    container.innerHTML = "";
+
+    grammarItems.forEach((item,index) => {
+        const div = document.createElement("div");
+        div.className = "practice-question";
+
+        div.innerHTML = `
+            <h3>${index + 1}. ${item.sentence}</h3>
+            <input id="grammar${index}" placeholder="Write your answer...">
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+function correctGrammar(){
+    let points = 0;
+    let html = "";
+
+    grammarItems.forEach((item,index) => {
+        const value = normalize(document.getElementById("grammar" + index).value);
+
+        if(item.answer.some(ans => normalize(ans) === value)){
+            points++;
+            html += `<p>✅ <strong>${index + 1}:</strong> Correct. ${item.explanation}</p>`;
+        }else{
+            html += `<p>❌ <strong>${index + 1}:</strong> Solution: ${item.solution}. ${item.explanation}</p>`;
+        }
+    });
+
+    const percent = Math.round((points / grammarItems.length) * 100);
+    const feedback = document.getElementById("grammarFeedback");
+
+    feedback.className = percent >= 60 ? "feedback good" : "feedback bad";
+    feedback.innerHTML = `<h3>Grammar score: ${points}/${grammarItems.length} · ${percent}%</h3>${html}`;
+
+    addXP(percent >= 80 ? 45 : percent >= 50 ? 25 : 10);
+
+    if(percent >= 80){
+        confetti();
+    }
+}
+
+function showGrammarSolutions(){
+    grammarItems.forEach((item,index) => {
+        document.getElementById("grammar" + index).value = item.solution;
+    });
+
+    showToast("Solutions inserted");
+}
+
+function newVocabCard(){
+    currentVocab = vocabCards[Math.floor(Math.random() * vocabCards.length)];
+    showingVocabAnswer = false;
+
+    document.getElementById("vocabTitle").textContent = currentVocab.word;
+    document.getElementById("vocabText").textContent = "Do you know this word? Click the card to see meaning and example.";
+}
+
+function flipVocabCard(){
+    if(!currentVocab) return;
+
+    showingVocabAnswer = !showingVocabAnswer;
+
+    if(showingVocabAnswer){
+        document.getElementById("vocabTitle").textContent = currentVocab.word + " = " + currentVocab.meaning;
+        document.getElementById("vocabText").textContent = currentVocab.example;
+    }else{
+        document.getElementById("vocabTitle").textContent = currentVocab.word;
+        document.getElementById("vocabText").textContent = "Do you know this word? Click the card to see meaning and example.";
+    }
+}
+
+function markWordKnown(){
+    stats.wordsKnown = Math.min(vocabCards.length, stats.wordsKnown + 1);
+    addXP(12);
+    updateStatsUI();
+
+    if(stats.wordsKnown >= vocabCards.length){
+        confetti();
+        showToast("Vocabulary completed!");
+    }
+
+    newVocabCard();
+}
+
+function renderTransform(){
+    const container = document.getElementById("transformContainer");
+    container.innerHTML = "";
+
+    transforms.forEach((item,index) => {
+        const div = document.createElement("div");
+        div.className = "practice-question";
+
+        div.innerHTML = `
+            <h3>${index + 1}. ${item.prompt}</h3>
+            <input id="transform${index}" placeholder="Rewrite the sentence...">
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+function correctTransform(){
+    let points = 0;
+    let html = "";
+
+    transforms.forEach((item,index) => {
+        const value = normalize(document.getElementById("transform" + index).value);
+
+        if(item.answer.some(ans => normalize(ans) === value)){
+            points++;
+            html += `<p>✅ <strong>${index + 1}:</strong> Correct.</p>`;
+        }else{
+            html += `<p>❌ <strong>${index + 1}:</strong> Solution: ${item.solution}</p>`;
+        }
+    });
+
+    const percent = Math.round((points / transforms.length) * 100);
+    const feedback = document.getElementById("transformFeedback");
+
+    feedback.className = percent >= 60 ? "feedback good" : "feedback bad";
+    feedback.innerHTML = `<h3>Use of English score: ${points}/${transforms.length} · ${percent}%</h3>${html}`;
+
+    addXP(percent >= 75 ? 45 : percent >= 50 ? 25 : 10);
+
+    if(percent >= 75){
+        confetti();
+    }
+}
+
+function showTransformSolutions(){
+    transforms.forEach((item,index) => {
+        document.getElementById("transform" + index).value = item.solution;
+    });
+
+    showToast("Solutions inserted");
+}
+
+function renderReading(){
+    const container = document.getElementById("readingContainer");
+    container.innerHTML = "";
+
+    readingQuestions.forEach((item,index) => {
+        const div = document.createElement("div");
+        div.className = "practice-question";
+
+        div.innerHTML = `
+            <h3>${index + 1}. ${item.q}</h3>
+            ${item.options.map((op,i) => `
+                <label class="option">
+                    <input type="radio" name="read${index}" value="${i}">
+                    ${op}
+                </label>
+            `).join("")}
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+function correctReading(){
+    let points = 0;
+
+    readingQuestions.forEach((item,index) => {
+        const selected = document.querySelector(`input[name="read${index}"]:checked`);
+
+        if(selected && Number(selected.value) === item.correct){
+            points++;
+        }
+    });
+
+    const percent = Math.round((points / readingQuestions.length) * 100);
+    const feedback = document.getElementById("readingFeedback");
+
+    feedback.className = percent >= 60 ? "feedback good" : "feedback bad";
+    feedback.innerHTML = `
+        <h3>Reading score: ${points}/${readingQuestions.length} · ${percent}%</h3>
+        <p>${percent >= 60 ? "Good job. You understood the main ideas." : "Review the text carefully and look for key words."}</p>
+    `;
+
+    addXP(percent >= 70 ? 35 : 15);
+
+    if(percent === 100){
+        confetti();
+    }
+}
+
+function renderListening(){
+    const container = document.getElementById("listeningContainer");
+    container.innerHTML = "";
+
+    listeningQuestions.forEach((item,index) => {
+        const div = document.createElement("div");
+        div.className = "practice-question";
+
+        div.innerHTML = `
+            <h3>${index + 1}. ${item.q}</h3>
+            ${item.options.map((op,i) => `
+                <label class="option">
+                    <input type="radio" name="lis${index}" value="${i}">
+                    ${op}
+                </label>
+            `).join("")}
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+function playListening(){
+    const text = "I used to feel very nervous before English exams, but I improved when I started planning my study time. Now I practise grammar for twenty minutes, read short texts and write one paragraph every day. My advice is simple: do not memorise everything the night before the exam.";
+
+    if("speechSynthesis" in window){
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-GB";
+        utterance.rate = 0.88;
+        window.speechSynthesis.speak(utterance);
+        addXP(5);
+    }else{
+        showToast("Speech synthesis not supported");
+    }
+}
+
+function toggleTranscript(){
+    const transcript = document.getElementById("transcript");
+    transcript.style.display = transcript.style.display === "none" ? "block" : "none";
+}
+
+function correctListening(){
+    let points = 0;
+
+    listeningQuestions.forEach((item,index) => {
+        const selected = document.querySelector(`input[name="lis${index}"]:checked`);
+
+        if(selected && Number(selected.value) === item.correct){
+            points++;
+        }
+    });
+
+    const percent = Math.round((points / listeningQuestions.length) * 100);
+    const feedback = document.getElementById("listeningFeedback");
+
+    feedback.className = percent >= 60 ? "feedback good" : "feedback bad";
+    feedback.innerHTML = `
+        <h3>Listening score: ${points}/${listeningQuestions.length} · ${percent}%</h3>
+        <p>${percent >= 60 ? "Nice listening. You caught the key information." : "Try again and focus on numbers and advice."}</p>
+    `;
+
+    addXP(percent >= 70 ? 35 : 15);
+
+    if(percent === 100){
+        confetti();
+    }
+}
+
+function insertWritingTemplate(){
+    document.getElementById("writingText").value =
+`In my opinion, students should use artificial intelligence to study, but they should use it responsibly.
+
+Firstly, AI can help students understand difficult topics because it can explain grammar, vocabulary and writing mistakes in a clear way. Moreover, it allows students to practise at their own pace.
+
+However, there are also some disadvantages. If students copy everything, they will not learn properly and their creativity may become weaker.
+
+To sum up, I believe that AI is a useful tool, but it should support learning, not replace personal effort.`;
+}
+
+function checkWriting(){
+    const text = document.getElementById("writingText").value.trim();
+    const clean = normalize(text);
+    const words = text.split(/\s+/).filter(Boolean);
+    const wordCount = words.length;
+
+    const connectors = ["firstly","secondly","moreover","however","although","in my opinion","for example","for instance","therefore","to sum up","as a result"];
+    const topicWords = ["artificial intelligence","students","study","learn","learning","education","technology","responsibly"];
+
+    let connectorCount = 0;
+    connectors.forEach(c => {
+        if(clean.includes(c)) connectorCount++;
+    });
+
+    let topicCount = 0;
+    topicWords.forEach(w => {
+        if(clean.includes(w)) topicCount++;
+    });
+
+    let score = 0;
+    if(wordCount >= 90) score++;
+    if(wordCount >= 120 && wordCount <= 190) score++;
+    if(connectorCount >= 3) score++;
+    if(topicCount >= 4) score++;
+    if(clean.includes("however") || clean.includes("although")) score++;
+    if(clean.includes("to sum up") || clean.includes("in conclusion")) score++;
+
+    const feedback = document.getElementById("writingFeedback");
+
+    let level = "Needs improvement";
+    if(score >= 5) level = "Excellent B2-style writing";
+    else if(score >= 3) level = "Good but improvable";
+
+    feedback.className = score >= 3 ? "feedback good" : "feedback bad";
+    feedback.innerHTML = `
+        <h3>${level}</h3>
+        <p><strong>Words:</strong> ${wordCount}</p>
+        <p><strong>Connectors detected:</strong> ${connectorCount}</p>
+        <p><strong>Topic vocabulary detected:</strong> ${topicCount}</p>
+        <p><strong>Advice:</strong> ${getWritingAdvice(score, wordCount, connectorCount)}</p>
+    `;
+
+    addXP(score >= 5 ? 60 : score >= 3 ? 35 : 15);
+
+    if(score >= 5){
+        confetti();
+    }
+}
+
+function getWritingAdvice(score, wordCount, connectorCount){
+    if(wordCount < 90){
+        return "Write more. A PAU-style writing normally needs development and examples.";
+    }
+
+    if(connectorCount < 3){
+        return "Add more connectors: Firstly, Moreover, However, For example, To sum up.";
+    }
+
+    if(score >= 5){
+        return "Very good structure. To improve further, add richer vocabulary and avoid repetition.";
+    }
+
+    return "Good base. Improve paragraph organisation and add one counterargument.";
+}
+
+function newSpeakingPrompt(){
+    const prompt = speakingPrompts[Math.floor(Math.random() * speakingPrompts.length)];
+    document.getElementById("speakingPrompt").textContent = prompt;
+}
+
+function startSpeakingTimer(){
+    clearInterval(speakingInterval);
+    speakingSeconds = 45;
+    updateSpeakingTimer();
+
+    speakingInterval = setInterval(() => {
+        speakingSeconds--;
+        updateSpeakingTimer();
+
+        if(speakingSeconds <= 0){
+            clearInterval(speakingInterval);
+            addXP(15);
+            showToast("Speaking practice completed");
+        }
+    },1000);
+}
+
+function updateSpeakingTimer(){
+    const sec = String(speakingSeconds).padStart(2,"0");
+    document.getElementById("speakingTimer").textContent = "00:" + sec;
+}
+
+function startExam(){
+    clearInterval(examInterval);
+    examSeconds = 900;
+    updateExamTimer();
+
+    examInterval = setInterval(() => {
+        examSeconds--;
+        updateExamTimer();
+
+        if(examSeconds <= 0){
+            clearInterval(examInterval);
+            correctExam();
+            showToast("Exam finished");
+        }
+    },1000);
+}
+
+function resetExam(){
+    clearInterval(examInterval);
+    examSeconds = 900;
+    updateExamTimer();
+
+    document.getElementById("examGrammar").value = "";
+    document.getElementById("examUse").value = "";
+    document.getElementById("examWriting").value = "";
+
+    const feedback = document.getElementById("examFeedback");
+    feedback.className = "feedback neutral";
+    feedback.style.display = "none";
+}
+
+function updateExamTimer(){
+    const min = String(Math.floor(examSeconds / 60)).padStart(2,"0");
+    const sec = String(examSeconds % 60).padStart(2,"0");
+    document.getElementById("examTimer").textContent = `${min}:${sec}`;
+}
+
+function correctExam(){
+    const grammar = normalize(document.getElementById("examGrammar").value);
+    const use = normalize(document.getElementById("examUse").value);
+    const writing = document.getElementById("examWriting").value.trim();
+    const cleanWriting = normalize(writing);
+    const wordCount = writing.split(/\s+/).filter(Boolean).length;
+
+    let points = 0;
+    let html = "";
+
+    if(grammar === "this school was built in 1998"){
+        points++;
+        html += "<p>✅ Passive voice correct.</p>";
+    }else{
+        html += "<p>❌ Passive voice: This school was built in 1998.</p>";
+    }
+
+    if(use === "would have"){
+        points++;
+        html += "<p>✅ Third conditional correct.</p>";
+    }else{
+        html += "<p>❌ Third conditional: would have.</p>";
+    }
+
+    if(wordCount >= 70 && (cleanWriting.includes("advantage") || cleanWriting.includes("disadvantage")) && (cleanWriting.includes("however") || cleanWriting.includes("on the other hand") || cleanWriting.includes("to sum up"))){
+        points++;
+        html += "<p>✅ Writing has enough length, topic vocabulary and connectors.</p>";
+    }else{
+        html += "<p>❌ Writing needs at least 70 words, topic vocabulary and connectors.</p>";
+    }
+
+    const percent = Math.round((points / 3) * 100);
+    const feedback = document.getElementById("examFeedback");
+
+    feedback.className = percent >= 67 ? "feedback good" : "feedback bad";
+    feedback.innerHTML = `
+        <h3>Exam result: ${points}/3 · ${percent}%</h3>
+        ${html}
+        <p><strong>General advice:</strong> In PAU, always check grammar accuracy, connectors and clear paragraph structure.</p>
+    `;
+
+    if(percent > stats.bestScore){
+        stats.bestScore = percent;
+    }
+
+    addXP(percent >= 90 ? 75 : percent >= 67 ? 45 : 20);
+
+    if(percent >= 90){
+        confetti();
+    }
+
+    saveStats();
+    updateStatsUI();
+}
+
+function newChallenge(){
+    const challenge = challenges[Math.floor(Math.random() * challenges.length)];
+    document.getElementById("challengeText").textContent = challenge;
+    stats.challengeDone = false;
+    saveStats();
+}
+
+function completeChallenge(){
+    if(stats.challengeDone){
+        showToast("Challenge already completed");
+        return;
+    }
+
+    stats.challengeDone = true;
+    addXP(25);
+    showToast("Daily challenge completed");
+}
+
+function sendTutorMessage(){
+    const input = document.getElementById("chatInput");
+    const text = input.value.trim();
+    const chat = document.getElementById("chatBody");
+
+    if(text === "") return;
+
+    chat.innerHTML += `<div class="message user">${escapeHTML(text)}</div>`;
+
+    const response = getTutorResponse(text);
+
+    setTimeout(() => {
+        chat.innerHTML += `<div class="message bot">${response}</div>`;
+        chat.scrollTop = chat.scrollHeight;
+    },250);
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function getTutorResponse(text){
+    const t = normalize(text);
+
+    if(t.includes("present perfect")){
+        return `
+            <strong>Present Perfect:</strong> have/has + past participle.<br>
+            Use it for experiences, unfinished time and actions connected to the present.<br><br>
+            <strong>Example:</strong> I have studied English for six years.
+        `;
+    }
+
+    if(t.includes("conditional")){
+        return `
+            <strong>Conditionals:</strong><br>
+            0: If + present, present. Facts.<br>
+            1: If + present, will. Real future.<br>
+            2: If + past, would. Unreal present/future.<br>
+            3: If + past perfect, would have + participle. Unreal past.
+        `;
+    }
+
+    if(t.includes("passive")){
+        return `
+            <strong>Passive voice:</strong> be + past participle.<br>
+            Active: They built the school.<br>
+            Passive: The school was built.<br><br>
+            <strong>Exam tip:</strong> keep the same tense.
+        `;
+    }
+
+    if(t.includes("reported")){
+        return `
+            <strong>Reported speech:</strong> report what someone said.<br>
+            Present usually changes to past: "I am tired" → He said he was tired.<br>
+            Also change pronouns and time expressions.
+        `;
+    }
+
+    if(t.includes("writing") || t.includes("essay")){
+        return `
+            <strong>Essay structure:</strong><br>
+            1. Introduction with your opinion.<br>
+            2. First argument.<br>
+            3. Second argument or example.<br>
+            4. Counterargument with however.<br>
+            5. Conclusion with to sum up.
+        `;
+    }
+
+    if(t.includes("connector")){
+        return `
+            <strong>Useful connectors:</strong><br>
+            Addition: moreover, in addition.<br>
+            Contrast: however, although, on the other hand.<br>
+            Result: therefore, as a result.<br>
+            Conclusion: to sum up, in conclusion.
+        `;
+    }
+
+    if(t.includes("vocabulary")){
+        return `
+            <strong>Vocabulary tip:</strong> learn words by topic:
+            education, technology, environment, society and health.
+            Use them in full sentences, not isolated lists.
+        `;
+    }
+
+    if(t.includes("exam") || t.includes("pau") || t.includes("abau")){
+        return `
+            <strong>PAU strategy:</strong><br>
+            1. Do grammar first if it is short.<br>
+            2. In reading, underline key words.<br>
+            3. In writing, use 4 paragraphs and connectors.<br>
+            4. Leave 3 minutes to check mistakes.
+        `;
+    }
+
+    if(t.includes("no entiendo")){
+        return `
+            No problem. Start with this method:
+            identify the tense, look for time words, choose the structure,
+            and then check the verb form. English grammar is mostly pattern recognition.
+        `;
+    }
+
+    return `
+        Try asking: “explain passive”, “conditionals”, “writing tips”,
+        “connectors”, “reported speech”, “present perfect” or “exam tips”.
+    `;
+}
+
+function toggleChat(){
+    const chatbot = document.getElementById("chatbot");
+    const open = document.getElementById("openChat");
+
+    if(chatbot.style.display === "none"){
+        chatbot.style.display = "block";
+        open.style.display = "none";
+    }else{
+        chatbot.style.display = "none";
+        open.style.display = "block";
+    }
+}
+
+function setupReveal(){
+    const elements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting){
+                entry.target.classList.add("visible");
+            }
+        });
+    },{threshold:.12});
+
+    elements.forEach(el => observer.observe(el));
+}
+
+document.getElementById("themeBtn").addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+    document.getElementById("themeBtn").textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+    localStorage.setItem("englishmaster_theme", isDark ? "dark" : "light");
+});
+
+function loadTheme(){
+    if(localStorage.getItem("englishmaster_theme") === "dark"){
+        document.body.classList.add("dark");
+        document.getElementById("themeBtn").textContent = "☀️ Light Mode";
+    }
+}
+
+function showToast(text){
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = text;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.remove();
+    },1800);
+}
+
+function confetti(){
+    const colors = ["#2563eb","#06b6d4","#f59e0b","#10b981","#ef4444","#7c3aed"];
+
+    for(let i = 0; i < 90; i++){
+        const piece = document.createElement("span");
+        piece.className = "confetti";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDelay = Math.random() * 0.8 + "s";
+        piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+        document.body.appendChild(piece);
+
+        setTimeout(() => {
+            piece.remove();
+        },3200);
+    }
+}
+
+function normalize(text){
+    return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .replace(/[.,!?;:]/g,"")
+        .trim()
+        .replace(/\s+/g," ");
+}
+
+function escapeHTML(text){
+    return text
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;");
+}
+</script>
+
+</body>
+</html>
